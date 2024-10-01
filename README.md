@@ -43,3 +43,7 @@ To run the API, first build the Docker image and then run it. The API source cod
     ```
 
 Once the container is up, the API will be available at [http://localhost:8000/](http://localhost:8000/).
+
+## API Endpoints and Documentation
+
+The available API endpoints, including their request and response formats, can be explored in the Swagger UI. Once the API is running, navigate to [http://localhost:8000/docs](http://localhost:8000/docs) to view the interactive documentation.
