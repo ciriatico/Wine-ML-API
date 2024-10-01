@@ -1,0 +1,17 @@
+dataset:
+  type: pandas.ParquetDataset
+  filepath: data/02_intermediate/wine.parquet
+
+train_set:
+  type: pandas.ParquetDataset
+  filepath: data/05_model_input/train_set.parquet
+
+test_set:
+  type: pandas.ParquetDataset
+  filepath: data/05_model_input/test_set.parquet
+
+classifier:
+  type: kedro_mlflow.io.models.MlflowModelTrackingDataset
+  flavor: mlflow.xgboost
+  save_args:
+    registered_model_name: wine_classification_xgboost_gridsearch

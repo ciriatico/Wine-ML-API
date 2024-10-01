@@ -1,0 +1,6 @@
+artifact_location: file:///Users/ciri/Desktop/sofia/xp/wine-ml-api/mlruns/507788483071909014
+creation_time: 1727740276923
+experiment_id: '507788483071909014'
+last_update_time: 1727740276923
+lifecycle_stage: active
+name: wine-gridsearchcv

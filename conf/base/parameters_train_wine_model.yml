@@ -1,0 +1,13 @@
+# This is a boilerplate parameters config generated for pipeline 'train_wine_model'
+# using Kedro 0.19.8.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/0.19.8/configuration/parameters.html
+model_inputs:
+  random_state: 12
+  test_size: 0.2
+  xgboost_params:
+    n_estimators: [50, 100, 200]
+    max_depth: [3, 4, 5]
+    learning_rate: [0.01, 0.1, 0.2]
+    objective: ['multi:softmax', 'multi:softprob']

@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1727740308611
+current_stage: None
+description: null
+last_updated_timestamp: 1727740308611
+name: wine_classification_xgboost_gridsearch
+run_id: 35a182d379a34b3383684282207c81c1
+run_link: null
+source: file:///Users/ciri/Desktop/sofia/xp/wine-ml-api/mlruns/507788483071909014/35a182d379a34b3383684282207c81c1/artifacts/model
+status: READY
+status_message: null
+storage_location: file:///Users/ciri/Desktop/sofia/xp/wine-ml-api/mlruns/507788483071909014/35a182d379a34b3383684282207c81c1/artifacts/model
+user_id: null
+version: 1
