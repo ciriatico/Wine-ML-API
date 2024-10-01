@@ -1,98 +1,45 @@
-# wine-ml-api
+# Wine Classification ML API
 
-## Overview
+## Description
 
-This is your new Kedro project with Kedro-Viz and PySpark setup, which was generated using `kedro 0.19.8`.
+The goal of this project is to present a simple application using:
 
-Take a look at the [Kedro documentation](https://docs.kedro.org) to get started.
+- **Kedro** to organize data science code
+- **MLflow** for model logging and registry
+- **FastAPI** to serve the trained model
 
-## Rules and guidelines
+The application was built using the Wine dataset. **XGBoost** was the chosen algorithm to tackle this multi-label classification problem, with **GridSearchCV** employed to fine-tune the model parameters.
 
-In order to get the best out of the template:
+## Installation
 
-* Don't remove any lines from the `.gitignore` file we provide
-* Make sure your results can be reproduced by following a [data engineering convention](https://docs.kedro.org/en/stable/faq/faq.html#what-is-data-engineering-convention)
-* Don't commit data to your repository
-* Don't commit any credentials or your local configuration to your repository. Keep all your credentials and local configuration in `conf/local/`
+1. To execute the notebook with the training code, you need to install the required dependencies of the Kedro project. 
 
-## How to install dependencies
+2. To run the FastAPI container, you need to install **Docker**. Follow the [official Docker documentation](https://docs.docker.com/get-docker/) for installation instructions.
 
-Declare any dependencies in `requirements.txt` for `pip` installation.
+## Running the Notebook and Pipeline
 
-To install them, run:
+The model was trained using the code available in the `train_wine_model.ipynb` notebook.
 
-```
-pip install -r requirements.txt
-```
+Alternatively, you can run the model as a Kedro pipeline by executing the following command:
 
-## How to run your Kedro pipeline
-
-You can run your Kedro project with:
-
-```
-kedro run
+```bash
+kedro run --pipeline=train_wine_model
 ```
 
-## How to test your Kedro project
+## Running the API
 
-Have a look at the files `src/tests/test_run.py` and `src/tests/pipelines/data_science/test_pipeline.py` for instructions on how to write your tests. Run the tests as follows:
+To run the API, first build the Docker image and then run it. The API source code can be found in `/src/fastapi`.
 
-```
-pytest
-```
+1. Build the Docker image:
 
-To configure the coverage threshold, look at the `.coveragerc` file.
+    ```bash
+    docker build -t wine-api ./src/fastapi
+    ```
 
-## Project dependencies
+2. Run the Docker container:
 
-To see and update the dependency requirements for your project use `requirements.txt`. Install the project requirements with `pip install -r requirements.txt`.
+    ```bash
+    docker run -d -p 8000:8000 wine-api
+    ```
 
-[Further information about project dependencies](https://docs.kedro.org/en/stable/kedro_project_setup/dependencies.html#project-specific-dependencies)
-
-## How to work with Kedro and notebooks
-
-> Note: Using `kedro jupyter` or `kedro ipython` to run your notebook provides these variables in scope: `catalog`, `context`, `pipelines` and `session`.
->
-> Jupyter, JupyterLab, and IPython are already included in the project requirements by default, so once you have run `pip install -r requirements.txt` you will not need to take any extra steps before you use them.
-
-### Jupyter
-To use Jupyter notebooks in your Kedro project, you need to install Jupyter:
-
-```
-pip install jupyter
-```
-
-After installing Jupyter, you can start a local notebook server:
-
-```
-kedro jupyter notebook
-```
-
-### JupyterLab
-To use JupyterLab, you need to install it:
-
-```
-pip install jupyterlab
-```
-
-You can also start JupyterLab:
-
-```
-kedro jupyter lab
-```
-
-### IPython
-And if you want to run an IPython session:
-
-```
-kedro ipython
-```
-
-### How to ignore notebook output cells in `git`
-To automatically strip out all output cell contents before committing to `git`, you can use tools like [`nbstripout`](https://github.com/kynan/nbstripout). For example, you can add a hook in `.git/config` with `nbstripout --install`. This will run `nbstripout` before anything is committed to `git`.
-
-> *Note:* Your output cells will be retained locally.
-
-## Package your Kedro project
-
-[Further information about building project documentation and packaging your project](https://docs.kedro.org/en/stable/tutorial/package_a_project.html)
+Once the container is up, the API will be available at [http://localhost:8000/](http://localhost:8000/).
