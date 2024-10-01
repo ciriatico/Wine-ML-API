@@ -26,6 +26,17 @@ Alternatively, you can run the model as a Kedro pipeline by executing the follow
 kedro run --pipeline=train_wine_model
 ```
 
+## Model Versioning
+
+The model versioning can be seen at the MLflow UI.
+
+```bash
+mlflow ui
+```
+
+This will launch the MLflow interface, where you can explore the existing experiment and check the first version of the model, which is already loaded in the container.
+
+
 ## Running the API
 
 To run the API, first build the Docker image and then run it. The API source code can be found in `/src/fastapi`.
